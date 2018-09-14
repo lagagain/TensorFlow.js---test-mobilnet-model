@@ -5,7 +5,8 @@ function setup() {
   let model = null;
 
   async function startCamera() {
-    Webcam.attach("#video");
+    
+        Webcam.attach("#video");
     setInterval(() => takeSnapshot(), 1000);
   }
 
@@ -13,12 +14,14 @@ function setup() {
     let context = canvas.getContext("2d"),
       width = video.videoWidth,
       height = video.videoHeight;
-
+    
+    if(Webcam.loaded){
       Webcam.snap( () => {
         // accept a paramter:data_uri
           },  canvas);
     
       classifyImage();
+      }
   }
 
   async function classifyImage() {
@@ -39,8 +42,12 @@ function setup() {
   }
 
   async function main() {
-    model = await mobilenet.load();
+    pre.innerHTML = "Opening Camera...."
     await startCamera();
+    
+    pre.innerHTML = "Loading Model...."
+    model = await mobilenet.load();
   }
+
   main();
 }

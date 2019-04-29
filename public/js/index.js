@@ -3,8 +3,8 @@ function setup() {
   let canvas = document.getElementById("canvas");
   let pre = document.getElementById("predictions");
   let model = null;
-  const MODEL_FILE_URL = '/model/web_model.pb';
-const WEIGHT_MANIFEST_FILE_URL = '/model/weights_manifest.json';
+  const MODEL_FILE_URL = './model/web_model.pb';
+const WEIGHT_MANIFEST_FILE_URL = './model/weights_manifest.json';
 const INPUT_NODE_NAME = 'input';
 const OUTPUT_NODE_NAME = 'final_result';
 const PREPROCESS_DIVISOR = tf.scalar(255 / 2);
